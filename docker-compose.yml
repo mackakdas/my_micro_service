@@ -1,0 +1,13 @@
+# Version of docker-compose
+version: '3'
+
+# Containers we are going to run
+services:
+  
+  web:
+    build: .
+    command: mix run --no-halt
+    volumes:
+      - .:/app
+
+
