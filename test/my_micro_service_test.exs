@@ -18,8 +18,8 @@ defmodule MyMicroService do
 
 
   def post_body() do
-    %{"url" => "www.qrt.com",
-    "short" => "qrt"
+    %{"url" => "www.bbc.com",
+    "short" => "bbcnews"
     } |> Poison.encode!
   end
 

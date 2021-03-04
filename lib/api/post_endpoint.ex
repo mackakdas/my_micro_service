@@ -29,20 +29,23 @@ defmodule MyMicroService.API.PostEndPiont do
         _ -> ""
       end
 
+    #get shortcode from json construct
+    #
     shortcode =
       case conn.body_params do
         %{"short" => a_name } -> a_name
         _ -> ""
       end
 
-
+    #if the shortcode comes up empty, create one of 6 chars long
+    #
     shortcode =
       case shortcode do
         "" -> MyMicroService.string_of_length(6) 
         _ -> shortcode
       end
 
-    if MyMicroService.valid_match?(shortcode) ==true do
+    if MyMicroService.valid_match?(shortcode) == true do
     
       records = Accounts.get_short_by_name(shortcode)
       
@@ -57,9 +60,6 @@ defmodule MyMicroService.API.PostEndPiont do
         d = DateTime.utc_now
         s = "#{d.year}-#{d.month}-#{d.day} #{d.hour} #{d.minute} #{d.second}"
         Accounts.create_account(url, shortcode, 0, s, s)
-
-        #response = %{"id" => 1, "url" => url, "short" => shortcode}
-        #send_resp(conn |> put_resp_content_type("text/html"), 200, "done !")
 
         response = %{"startDate" => s, "lastSeenDate" => s, "redirectCount" => "1" , "status" => "ok" , "redirectUrl" => url , "short" => shortcode}
         send_resp(conn |> put_resp_content_type("application/json"), 200, Poison.encode!(response))
