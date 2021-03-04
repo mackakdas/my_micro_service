@@ -1,17 +1,6 @@
 defmodule MyMicroService.API.GetEndPoint do
   import Plug.Conn
 
-
-	@apidoc """
-	@api {get} code/get/:code Request code to url information
-	@apiName GetCode
-	@apiGroup Code
-
-	@apiParam {url valid string} code  unique ID.
-
-	@apiSuccess {String} redirects with a html content.
-
-	"""
   def get(conn,shortcode) do
 
 	
@@ -72,8 +61,6 @@ defmodule MyMicroService.API.GetEndPoint do
 		#
 		response = %{"startDate" => "", "lastSeenDate" => "" , "redirectCount" => "" , "status" => "notfound" , "redirectUrl" => "" , "short" => ""}
 		send_resp(conn |> put_resp_content_type("application/json"), 200, Poison.encode!(response))
-
-
 
 	end
   end

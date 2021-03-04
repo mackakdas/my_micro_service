@@ -2,18 +2,6 @@ defmodule MyMicroService.API.PostEndPiont do
   import Plug.Conn
 
 
-	@apidoc """
-	@api {set} code/set/:code binds the given code to url information
-  @json construct looks like this : {"url" : "www.best.nl" , "short" : "best"}
- 
-  @curl curl --header "Content-Type: application/json" -d "{\"url\":\"www.best.nl\",\"short\":\"best\"}" http://localhost:4000/code/set 
- 
-  @apiName SetCode
-	@apiGroup Code
-
-
-	"""
-
   def random_string(length) do
     :crypto.strong_rand_bytes(length) |> Base.url_encode64 |> binary_part(0, length)
   end
