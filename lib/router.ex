@@ -10,6 +10,7 @@ defmodule MyMicroService.Router do
 
   plug :dispatch
 
+  
 
   #this wil cause a redirect
   #
@@ -31,16 +32,6 @@ defmodule MyMicroService.Router do
     end
   end
 
-
-  #will create an image for a name
-  #
-  get "/code/create/:code" do
-    if MyMicroService.valid_match?(code) ==true do
-      API.HelloEndpoint.show(conn,code)
-    else
-      send_resp(conn, 422, "invalid shortcode !")
-    end
-  end
 
   #will bind the given shortcode to the url
   #shortcode will be checked for validity
