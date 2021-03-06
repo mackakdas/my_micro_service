@@ -26,8 +26,7 @@ defmodule MyMicroService do
 
   test "API code post " do
 
-      {:ok, resp} = HTTPoison.post("http://localhost:4000/code/set", post_body(), %{"Content-Type" => "application/json", "Cache-Control" => "no-cache"})
-
+      resp = HTTPoison.post!("http://localhost:4000/code/set", post_body(), %{"Content-Type" => "application/json", "Cache-Control" => "no-cache"})
       #IO.puts inspect resp
       assert resp.status_code == 200
   end

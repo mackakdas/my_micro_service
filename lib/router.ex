@@ -10,12 +10,12 @@ defmodule MyMicroService.Router do
 
   plug :dispatch
 
-  
 
+ 
   #this wil cause a redirect
   #
   get "/code/get/:code" do
-    if MyMicroService.valid_match?(code) ==true do
+    if MyGlobals.valid_match(code) ==true do
       API.GetEndPoint.get(conn,code)
     else
       send_resp(conn, 422, "invalid shortcode !")
@@ -25,7 +25,7 @@ defmodule MyMicroService.Router do
   #wil return statistics of given shortcode
   #
   get "/code/stats/:code" do
-    if MyMicroService.valid_match?(code) ==true do
+    if MyGlobals.valid_match(code) ==true do
       API.GetEndPoint.stats(conn,code)
     else
       send_resp(conn, 422, "invalid shortcode !")

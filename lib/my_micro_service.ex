@@ -45,14 +45,9 @@ defmodule MyMicroService do
   end
 
 
-  def string_of_length(length) do
-    Enum.reduce((1..length), [], fn (_i, acc) ->
-      [Enum.random(@chars) | acc]
-    end) |> Enum.join("")
-  end
+ 
 
-  def valid_match?(code) do
-    String.match?(code, ~r/^[0-9a-zA-Z_]{4,}$/)
-  end
+
+
 
 end

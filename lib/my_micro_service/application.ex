@@ -17,4 +17,9 @@ defmodule MyMicroService.Application do
     opts = [strategy: :one_for_one, name: MyMicroService.Supervisor]
     Supervisor.start_link(children, opts)
   end
+
+
+
+
+
 end

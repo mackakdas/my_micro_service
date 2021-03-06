@@ -2,11 +2,6 @@ defmodule MyMicroService.API.PostEndPiont do
   import Plug.Conn
 
 
-  def random_string(length) do
-    :crypto.strong_rand_bytes(length) |> Base.url_encode64 |> binary_part(0, length)
-  end
-
-
 
 
  def set(conn) do
@@ -29,11 +24,11 @@ defmodule MyMicroService.API.PostEndPiont do
     #
     shortcode =
       case shortcode do
-        "" -> MyMicroService.string_of_length(6) 
+        "" -> MyGlobals.string_of_length(6) 
         _ -> shortcode
       end
 
-    if MyMicroService.valid_match?(shortcode) == true do
+    if MyGlobals.valid_match(shortcode) == true do
     
       records = Accounts.get_short_by_name(shortcode)
       
