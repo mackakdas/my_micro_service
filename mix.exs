@@ -36,7 +36,6 @@ defmodule MyMicroService.MixProject do
   end
 
 
-
   # Run "mix help deps" to learn about dependencies.
 defp deps do
   [
@@ -48,7 +47,8 @@ defp deps do
     {:egd, github: "erlang/egd"},
     {:tesla, "~> 1.4.0"},
     {:json, "~> 1.4"},
-    {:amnesia, "~> 0.2.8"}
+    {:amnesia, "~> 0.2.8"},
+    {:credo, "~> 1.4", only: [:dev, :test], runtime: false}
 
 
   ]

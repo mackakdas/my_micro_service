@@ -1,9 +1,6 @@
 defmodule MyMicroService.API.PostEndPiont do
   import Plug.Conn
 
-
-
-
  def set(conn) do
 
     url =
@@ -34,7 +31,7 @@ defmodule MyMicroService.API.PostEndPiont do
       
       if records !=[] do
       
-        [%Database.Account{stats_value: stats_value, url_value: url_value, id: id, short_value: shortcode, start_date: start_date, lastseen_date: lastseen_date} | _rest] = records
+        [%Database.Account{stats_value: stats_value, url_value: url_value, id: _id, short_value: shortcode, start_date: start_date, lastseen_date: lastseen_date} | _rest] = records
         response = %{"startDate" => start_date, "lastSeenDate" => lastseen_date , "redirectCount" => stats_value , "status" => "known" , "redirectUrl" => url_value ,"shortcode" => shortcode }
         send_resp(conn |> put_resp_content_type("application/json"), 200, Poison.encode!(response))
       

@@ -2,6 +2,15 @@ defmodule MyMicroService do
   use Application
   use ExUnit.Case
 
+
+
+#  - The project contains a poor git commit history (all assignment in mostly 1 commit)
+#  - It lacks of test coverage
+#  - Naming conventions are hard to track and irrelevant in many places
+#  - Some code seems to come from other projects in some files?
+
+
+  
   def start(_type, _args) do
 
 

@@ -7,7 +7,4 @@ defdatabase Database do
     type: :ordered_set,
     index: [:short_value]
   )
-
-
-
 end

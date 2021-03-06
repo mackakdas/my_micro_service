@@ -2,7 +2,6 @@ defmodule MyMicroService do
   use Application
 
 
-  @chars "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789" |> String.split("")
 
 
   def start(_type, _args) do
@@ -10,11 +9,6 @@ defmodule MyMicroService do
     #mix amnesia.drop -d Database --schema
     #mix amnesia.create -d Database --disk
 
-
-    #TODOS: Check for
-    #mnesia running
-    #ensure_schema_exists
-    #ensure_table_exists
 
     IO.puts "" 
     :mnesia.stop
@@ -24,14 +18,22 @@ defmodule MyMicroService do
     IO.puts "-->" <> "server started, listening to port : 4000"
 
 
+    #Emergincy git push
+    #
+    #$ git add .
+    #$ git commit -m "Bug Fixed"
+    #$ git push -u origin master
 
 
 
+    # - The project contains a poor git commit history (all assignment in mostly 1 commit)
+    # - It lacks of test coverage
+    #   $ mix test --cover
+    # - Naming conventions are hard to track and irrelevant in many places
+    #
+    # - Some code seems to come from other projects in some files?
 
     
-    #TODOS: 
-    #configuration file
-
     children = [
         Plug.Cowboy.child_spec(
           scheme: :http,

@@ -20,6 +20,5 @@ defmodule MyMicroService.Application do
 
 
 
-
-
+  
 end

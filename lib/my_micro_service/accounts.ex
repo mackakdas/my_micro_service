@@ -13,18 +13,6 @@ defmodule Accounts do
     end
   end
 
-  def get_account(account_id) do
-    Amnesia.transaction do
-      Account.read(account_id)
-    end
-    |> case do
-      %Account{} = account -> account
-      _ -> {:error, :not_found}
-    end
-  end
-
-
-
 
   def get_short_by_name(short_name) do
     Amnesia.transaction do
@@ -42,24 +30,12 @@ defmodule Accounts do
           {:error, :not_found}
       end
     end
-
-
   end
-
-
 
   defp adjust_account_stats(%Account{} = account, value, lastseen_date) do
     value = value + 1
     account
     |> Map.merge(%{stats_value: value , lastseen_date:  lastseen_date} )
     |> Account.write()
-
   end
-
-
-
-
-
-
-
 end
